@@ -11,11 +11,9 @@ export class WebsocketService {
   constructor() {}
 
   connect(): Observable<any> {
-    // WebSocket kapcsolat létrehozása
     this.socket = new WebSocket('ws://localhost:8080');
 
     return new Observable(observer => {
-      // Üzenet érkezésekor továbbítjuk az adatokat az Observer felé
       this.socket.onmessage = (event) => {
         try {
           const data = JSON.parse(event.data);
@@ -25,12 +23,10 @@ export class WebsocketService {
         }
       };
 
-      // Hiba kezelése
       this.socket.onerror = (error) => {
         observer.error(error);
       };
 
-      // Kapcsolat bezárásakor jelezzük az Observer-nek a befejezést
       this.socket.onclose = () => {
         observer.complete();
       };
@@ -38,7 +34,6 @@ export class WebsocketService {
   }
 
   close(): void {
-    // Kapcsolat lezárása
     if (this.socket) {
       this.socket.close();
     }
