@@ -1,0 +1,16 @@
+.canvas {
+    position: relative;
+    width: 800px;
+    height: 600px;
+    border: 2px solid #000;
+    margin: 20px auto;
+    overflow: hidden;
+    background-color: #f0f0f0;
+  }
+  
+  .dot {
+    position: absolute;
+    background-color: red;
+    border-radius: 50%;
+  }
+  
